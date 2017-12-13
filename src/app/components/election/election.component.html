@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="card col-lg-12" *ngFor="let voteSummary of votesSummary">
+    <div class="card-body">
+      <h4 class="card-title">{{voteSummary.candidate.firstName}} {{voteSummary.candidate.lastName}}: {{voteSummary.voteCount}}</h4>
+      <p class="card-text">{{voteSummary.candidate.party.name}}</p>
+      <div class="progress">
+        {{getPercentage(voteSummary.voteCount)}}
+        <div class="progress-bar bg-success" role="progressbar" [style.width.%]="getPercentage(voteSummary.voteCount)" [style.background-color]="voteSummary.candidate.party.color" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    Total: {{totalVotes}}
+  </div>
+</body>
+
+</html>
